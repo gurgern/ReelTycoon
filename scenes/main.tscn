@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=3 uid="uid://main_scene"]
+
+[ext_resource type="Script" path="res://scripts/ui/main.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/pipeline_manager.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/systems/trend_system.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/systems/meme_market_system.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/systems/algorithm_system.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/systems/event_system.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/systems/economy_system.gd" id="7"]
+[ext_resource type="PackedScene" uid="uid://hud_scene" path="res://scenes/ui/hud.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://trend_board" path="res://scenes/ui/trend_board.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://pipeline_panel" path="res://scenes/ui/pipeline_panel.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://upgrade_shop" path="res://scenes/ui/upgrade_shop.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://toast_ui" path="res://scenes/ui/toast.tscn" id="12"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.11, 0.18, 1)
+
+[node name="GameSystems" type="Node" parent="."]
+
+[node name="PipelineManager" type="Node" parent="GameSystems"]
+script = ExtResource("2")
+
+[node name="TrendSystem" type="Node" parent="GameSystems"]
+script = ExtResource("3")
+
+[node name="MemeMarketSystem" type="Node" parent="GameSystems"]
+script = ExtResource("4")
+
+[node name="AlgorithmSystem" type="Node" parent="GameSystems"]
+script = ExtResource("5")
+
+[node name="EventSystem" type="Node" parent="GameSystems"]
+script = ExtResource("6")
+
+[node name="EconomySystem" type="Node" parent="GameSystems"]
+script = ExtResource("7")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "ReelTycoon"
+horizontal_alignment = 1
+
+[node name="HUD" parent="Layout" instance=ExtResource("8")]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+
+[node name="TrendSection" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="TrendLabel" type="Label" parent="Layout/TrendSection"]
+layout_mode = 2
+text = "Meme Market"
+theme_override_font_sizes/font_size = 18
+
+[node name="TrendBoard" parent="Layout/TrendSection" instance=ExtResource("9")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PipelineSection" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PipelineLabel" type="Label" parent="Layout/PipelineSection"]
+layout_mode = 2
+text = "Reel Pipeline"
+theme_override_font_sizes/font_size = 18
+
+[node name="PipelinePanel" parent="Layout/PipelineSection" instance=ExtResource("10")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TutorialLabel" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Tap NEW REEL IDEA to start"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="NewReelBtn" type="Button" parent="Layout"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "+ New Reel Idea"
+
+[node name="UpgradeSection" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UpgradeLabel" type="Label" parent="Layout/UpgradeSection"]
+layout_mode = 2
+text = "Upgrades"
+theme_override_font_sizes/font_size = 18
+
+[node name="UpgradeShop" parent="Layout/UpgradeSection" instance=ExtResource("11")]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Toast" parent="." instance=ExtResource("12")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FloatLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CancelledOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0, 0, 0.75)
+
+[node name="Label" type="Label" parent="CancelledOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "CANCELLED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OfflineModal" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -120.0
+offset_right = 260.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="OfflineModal"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="OfflineModal/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="OfflineModal/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "While you were gone..."
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="OfflineModal/Margin/VBox"]
+layout_mode = 2
+text = "+0 views"
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="OfflineModal/Margin/VBox"]
+layout_mode = 2
+text = "Nice"
+
+[node name="WinModal" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -100.0
+offset_right = 280.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="WinModal"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="WinModal/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="WinModal/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "You Went Viral (Kind Of)"
+horizontal_alignment = 1
+
+[node name="Sub" type="Label" parent="WinModal/Margin/VBox"]
+layout_mode = 2
+text = "10K followers or $1K reached. Touch grass optional."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Close" type="Button" parent="WinModal/Margin/VBox"]
+layout_mode = 2
+text = "Keep Grindset"

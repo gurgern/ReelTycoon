@@ -1,0 +1,22 @@
+{
+  "stage_durations_sec": {
+    "idea": 3.0,
+    "film": 4.0,
+    "edit": 5.0,
+    "caption": 2.5,
+    "post": 2.0
+  },
+  "base_views": 120,
+  "cpm_rate": 0.002,
+  "follower_conversion": 0.08,
+  "offline_cap_sec": 14400,
+  "offline_efficiency": 0.5,
+  "upgrade_cost_base": 25,
+  "upgrade_cost_growth": 1.15,
+  "win_followers": 10000,
+  "win_cash": 1000,
+  "drama_cancel_threshold": 100,
+  "drama_cancel_duration_sec": 30,
+  "algorithm_mood_drift_per_min": 3.0,
+  "slots_per_stage": 1
+}

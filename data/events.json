@@ -1,0 +1,61 @@
+{
+  "min_interval_sec": 30,
+  "max_interval_sec": 90,
+  "events": [
+    {
+      "id": "comment_war",
+      "title": "Comment Section War",
+      "description": "Everyone's fighting. Engagement is THROUGH THE ROOF.",
+      "drama_delta": 15,
+      "views_bonus_pct": 0.25,
+      "cash_delta": 0
+    },
+    {
+      "id": "shadowban_scare",
+      "title": "Shadowban Scare",
+      "description": "Did the algorithm forget you exist?",
+      "drama_delta": 5,
+      "algorithm_mood_delta": -20,
+      "duration_sec": 60
+    },
+    {
+      "id": "brand_deal",
+      "title": "Mystery Brand Deal",
+      "description": "A suspicious energy drink wants to sponsor you. $$$",
+      "cash_delta": 45,
+      "drama_delta": 8
+    },
+    {
+      "id": "algorithm_update",
+      "title": "Algorithm Update",
+      "description": "The algo changed overnight. Panic accordingly.",
+      "algorithm_mood_delta": -15,
+      "duration_sec": 10
+    },
+    {
+      "id": "trend_mooning",
+      "title": "Trend Mooning",
+      "description": "One trend just went vertical. GET ON IT.",
+      "market_event": "moon"
+    },
+    {
+      "id": "meme_bubble_burst",
+      "title": "Meme Bubble Burst",
+      "description": "The hottest trend just face-planted.",
+      "market_event": "burst"
+    },
+    {
+      "id": "dead_revival",
+      "title": "Dead Trend Revival",
+      "description": "A forgotten meme crawled back from the grave.",
+      "market_event": "revival"
+    },
+    {
+      "id": "viral_neighbor",
+      "title": "Neighbor Went Viral",
+      "description": "Your cousin's reel hit 2M. You're fine. Probably.",
+      "drama_delta": 10,
+      "algorithm_mood_delta": -5
+    }
+  ]
+}
